@@ -25,16 +25,16 @@ pipeline {
                     // Change the version number based on the branch
                     if (env.BRANCH_NAME == 'dev') {
                         // Feature branch merged into dev
-                        env.ARTIFACT_VERSION = '1.0.0-snapshot'
+                        env.ARTIFACT_VERSION = '1.0.0-snapshot_dev'
                     } else if (env.BRANCH_NAME == 'release') {
                         // Dev branch merged into release
-                        env.ARTIFACT_VERSION = '1.0.0-RC'
+                        env.ARTIFACT_VERSION = '1.0.0-Final'
                     } else if (env.BRANCH_NAME == 'master') {
                         // Release branch merged into master
                         env.ARTIFACT_VERSION = '1.0.0'
-                    } else {
+                    } else if (env.BRANCH_NAME == 'feature') {
                         // Default version if branch is not recognized
-                        env.ARTIFACT_VERSION = '1.0.0-unknown'
+                        env.ARTIFACT_VERSION = '1.0.0-Feature'
                     }
 
                     // Update the project version using Maven

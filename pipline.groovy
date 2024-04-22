@@ -42,14 +42,7 @@ pipeline {
         stage('Package') {
             steps {
                 bat 'mvn clean package'
-                script {
-                    // Assuming the packaging phase creates a WAR or JAR file, rename and archive the artifact
-                    def artifactFilename = "${env.ARTIFACT_NAME}-${env.ARTIFACT_VERSION}.jar" 
-                    
-
-                    // Archive the artifact in Jenkins
-                    archiveArtifacts artifacts: "${artifactFilename}", onlyIfSuccessful: true
-                }
+                
             }
         }
     }

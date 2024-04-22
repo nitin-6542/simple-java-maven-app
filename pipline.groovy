@@ -43,9 +43,9 @@ pipeline {
             steps {
                 bat 'mvn clean package'
                 script {
-                    def artifactFilename = "${env.ARTIFACT_NAME}-${env.ARTIFACT_VERSION}.jar"
-                    // Use a Windows batch for loop to handle renaming the JAR file
-                    bat "for %%f in (target\\*.jar) do copy %%f target\\${artifactFilename}"
+                    // Assuming the packaging phase creates a WAR or JAR file, rename and archive the artifact
+                    def artifactFilename = "${env.ARTIFACT_NAME}-${env.ARTIFACT_VERSION}.jar" 
+                    
 
                     // Archive the artifact in Jenkins
                     archiveArtifacts artifacts: "target/${artifactFilename}", onlyIfSuccessful: true

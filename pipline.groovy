@@ -48,7 +48,7 @@ pipeline {
                     
 
                     // Archive the artifact in Jenkins
-                    archiveArtifacts artifacts: "target/${artifactFilename}", onlyIfSuccessful: true
+                    archiveArtifacts artifacts: "${artifactFilename}", onlyIfSuccessful: true
                 }
             }
         }
